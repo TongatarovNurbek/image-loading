@@ -9,12 +9,13 @@ let counter:number = 0
 let lastLoading:any[] = []
 let lastCityImage:any[] = []
 let tekshir:boolean = false
+let counterImg:number = 0
 
 button.addEventListener("click",function() {result()})
 
 function fnLoading():void {
     for (let i = 0; i < firstLoading.length; i++) {
-        let random:number = Math.ceil(Math.random() * 2+2)
+        let random:number = Math.ceil(Math.random() * 2+3)
         loadingArray.push(random)
         firstLoading[i].style.animationDuration = `${random}s`
     }
@@ -26,7 +27,7 @@ let time:any = setInterval(function():void {
     loadingStop()
     
     console.log(counter);
-    if (counter === 4) {
+    if (counter === 5) {
         clearInterval(time)
     }
 }, 1000);
@@ -47,18 +48,17 @@ function loadingStop():void {
                 lastCityImage[i].style.opacity = "1"
             }
             
-            if (counter === 4) {
+            if (counter === 5) {
                 clearInterval(time)
             }
         }
-        
     }
 }
 
 
 function result():void {
 
-    if (counter >= 4) {
+    if (counter >= 5) {
         console.log(counter);
         
         counter = 0
@@ -69,7 +69,7 @@ function result():void {
                 loadingStop()
                 
                 console.log(counter);
-                if (counter === 4) {
+                if (counter === 5) {
                     clearInterval(time)
                 }
             }, 1000);
@@ -102,24 +102,14 @@ function result():void {
 }
 
 function randomImg():string {
-    let img:string[] = [
-    "https://images.pexels.com/photos/3573382/pexels-photo-3573382.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/3849167/pexels-photo-3849167.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/3859774/pexels-photo-3859774.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/1121782/pexels-photo-1121782.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/1402790/pexels-photo-1402790.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/3075993/pexels-photo-3075993.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/951539/pexels-photo-951539.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=600"]
-
-    let random = Math.ceil(Math.random() * 7)
-    console.log(random);
-    
-    return img[random]
+    if (counterImg >= 10) {
+        return `https://picsum.photos/3000/30${counterImg++}`
+    } 
+    return `https://picsum.photos/3000/300${counterImg++}`
 }
 
 function loadingRandom():number {
-    let random = Math.ceil(Math.random() * 2+2)
+    let random = Math.ceil(Math.random() * 2+3)
     loadingArray.push(random)
     return random
 }
