@@ -113,3 +113,5 @@ function loadingRandom():number {
     loadingArray.push(random)
     return random
 }
+
+// ...
